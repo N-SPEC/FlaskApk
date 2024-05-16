@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+</head>
+<body>
+    <h1>Welcome to the Flask App</h1>
+    <ul>
+        <li><a href="{{ url_for('register') }}">Register</a></li>
+        <li><a href="{{ url_for('login') }}">Login</a></li>
+        <li><a href="{{ url_for('logout') }}">Logout</a></li>
+        <li><a href="{{ url_for('show_area') }}">Show Areas</a></li>
+        <li><a href="{{ url_for('show_position') }}">Show Position</a></li>
+        <li><a href="{{ url_for('select_area_position') }}">Dynamic Dropdown</a></li>
+        <li><a href="{{ url_for('add_area') }}">Add Area</a></li>
+        <li><a href="{{ url_for('add_position') }}">Add Position</a></li>
+        <li><a href="{{ url_for('manage_areas') }}">Manage Areas</a></li>
+        <li><a href="{{ url_for('manage_positions') }}">Manage Positions</a></li>
+    </ul>
+</body>
+</html>

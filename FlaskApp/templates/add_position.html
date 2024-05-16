@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Position</title>
+</head>
+<body>
+    <h1>Add a New Position</h1>
+    <form action="{{ url_for('add_position') }}" method="post">
+        <label for="position_name">Position Name:</label>
+        <input type="text" id="position_name" name="position_name" required><br><br>
+        <label for="area_id">Select Area:</label>
+        <select id="area_id" name="area_id">
+            {% for area in areas %}
+                <option value="{{ area.area_id }}">{{ area.area_name }}</option>
+            {% endfor %}
+        </select><br><br>
+        <button type="submit">Add Position</button>
+    </form>
+</body>
+</html>

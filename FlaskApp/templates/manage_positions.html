@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Manage Positions</title>
+</head>
+<body>
+    <h1>Manage Positions</h1>
+    <h2>Add New Position</h2>
+<form action="{{ url_for('manage_positions') }}" method="post">
+    <label for="position_name">Position Name:</label>
+    <input type="text" id="position_name" name="position_name" required><br><br>
+    <label for="area_id">Select Area:</label>
+    <select id="area_id" name="area_id">
+        {% for area in areas %}
+            <option value="{{ area.area_id }}">{{ area.area_name }}</option>
+        {% endfor %}
+    </select><br><br>
+    <button type="submit" name="add_position">Add Position</button>
+</form>
+
+    <h2>Existing Positions</h2>
+    <ul>
+        {% for position in positions %}
+            <li>
+                {{ position.position_name }} (Area: {{ position.area_id }}) 
+                <form action="{{ url_for('manage_positions') }}" method="post" style="display:inline;">
+                    <input type="hidden" name="position_id" value="{{ position.position_id }}">
+                    <button type="submit" name="edit_position">Edit</button>
+                    <input type="text" name="edited_position_name" value="{{ position.position_name }}">
+                    <select name="edited_area_id">
+                        {% for area in areas %}
+                            <option value="{{ area.area_id }}" {% if area.area_id == position.area_id %} selected {% endif %}>{{ area.area_name }}</option>
+                        {% endfor %}
+                    </select>
+                </form>
+                <form action="{{ url_for('manage_positions') }}" method="post" style="display:inline;">
+                    <input type="hidden" name="position_id" value="{{ position.position_id }}">
+                    <button type="submit" name="delete_position">Delete</button>
+                </form>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
